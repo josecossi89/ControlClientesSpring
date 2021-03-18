@@ -4,7 +4,7 @@ package com.vzla.jc.servicio;
 import com.vzla.jc.domain.Persona;
 import java.util.List;
 
-public interface PersonaServivce {
+public interface PersonaService {
     
     public List<Persona> listarPersonas();
     
