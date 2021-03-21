@@ -1,6 +1,6 @@
 package com.vzla.jc.web;
 
-import com.vzla.jc.dao.PersonaDao;
+import com.vzla.jc.servicio.PersonaService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class ControladorInicio {
 
     @Autowired
-    private PersonaDao personaDao;
+    private PersonaService personaService;
     @GetMapping("/")
     public String inicio(Model model) {
         
-        var personas = personaDao.findAll();
-
+        var personas = personaService.listarPersonas();
         log.info("Ejecutando el controlador Spring MVC");
 
         model.addAttribute("personas", personas);
