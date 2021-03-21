@@ -1,11 +1,7 @@
 package com.vzla.jc.web;
 
 import com.vzla.jc.dao.PersonaDao;
-import com.vzla.jc.domain.Persona;
-import java.util.ArrayList;
-import java.util.Arrays;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
