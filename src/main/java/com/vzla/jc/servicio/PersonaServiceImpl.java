@@ -10,29 +10,37 @@ import org.springframework.stereotype.Service;
 public class PersonaServiceImpl implements PersonaService {
 
     @Autowired
-   private PersonaDao personaDao;
-   
+    private PersonaDao personaDao;
+
     @Override
-    
+
     public List<Persona> listarPersonas() {
         return (List<Persona>) personaDao.findAll();
+        /*Se invoca al objeto personaDao junto con el metodo findAll
+        y este retorna una Lista con todos los datos consultados*/
     }
 
     @Override
     public void guardar(Persona persona) {
         personaDao.save(persona);
+        /*Se invoca al objeto personaDao junto con el metodo Save y 
+       se le pasa el objeto persona para guardar los datos*/
 
     }
 
     @Override
     public void eliminar(Persona persona) {
         personaDao.delete(persona);
-
+//Se invoca al objeto personaDao junto con el metodo Delete y se le pasa el objeto persona
     }
 
     @Override
     public Persona encontrarPersona(Persona persona) {
         return personaDao.findById(persona.getIdPersona()).orElse(null);
+        /*Se invoca al objeto personaDao junto con el metodo findById con
+el parametro objeto persona al encontrar el ID buscado lo retorna y en tal 
+        caso de no encontrar el ID retorna un NULL
+         */
     }
-    
+
 }
