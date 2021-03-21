@@ -5,6 +5,7 @@ import com.vzla.jc.domain.Persona;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class PersonaServiceImpl implements PersonaService {
@@ -13,7 +14,7 @@ public class PersonaServiceImpl implements PersonaService {
     private PersonaDao personaDao;
 
     @Override
-
+    @Transactional(readOnly = true)
     public List<Persona> listarPersonas() {
         return (List<Persona>) personaDao.findAll();
         /*Se invoca al objeto personaDao junto con el metodo findAll
@@ -21,6 +22,7 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
+    @Transactional
     public void guardar(Persona persona) {
         personaDao.save(persona);
         /*Se invoca al objeto personaDao junto con el metodo Save y 
@@ -29,12 +31,14 @@ public class PersonaServiceImpl implements PersonaService {
     }
 
     @Override
+    @Transactional
     public void eliminar(Persona persona) {
         personaDao.delete(persona);
 //Se invoca al objeto personaDao junto con el metodo Delete y se le pasa el objeto persona
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Persona encontrarPersona(Persona persona) {
         return personaDao.findById(persona.getIdPersona()).orElse(null);
         /*Se invoca al objeto personaDao junto con el metodo findById con
