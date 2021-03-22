@@ -13,7 +13,9 @@ public class ControladorInicio {
 
     @Autowired
     private PersonaService personaService;
+    
     @GetMapping("/")
+    
     public String inicio(Model model) {
         
         var personas = personaService.listarPersonas();
